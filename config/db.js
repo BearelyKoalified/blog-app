@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
+const config = require('config');
+const db = config.get('DATABASE_URL');
 
-const connectDB = async (db) => {
+const connectDB = async () => {
   try {
     await mongoose.connect(db, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
     console.log('Mongoose Connected to DB');
