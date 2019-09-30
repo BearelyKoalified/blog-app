@@ -1,11 +1,17 @@
 const express = require('express');
+
 const connectDB = require('./config/db');
 const config = require('config');
+const path = require('path');
 
 const app = express();
 
 // Connect Database
 connectDB();
+
+// Middleware
+app.use(express.json({extended: false}));
+
 
 app.get('/', (req, res) => res.send('API running'));
 
