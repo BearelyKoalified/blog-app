@@ -7,7 +7,6 @@ const router = express.Router();
   @access  Public
  ****************************/
 router.post('/', (req, res) => {
-  console.log(req.body);
   res.send('User route');
 });
 
