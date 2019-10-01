@@ -110,5 +110,4 @@ const ProfileSchema = new mongoose.Schema({
   }
 });
 });
-// test
 module.exports = Profile = mongoose.model('profile', ProfileSchema);
