@@ -52,20 +52,19 @@ router.post('/', [
 
     // encrypt password using bcrypt
     const salt = await bcrypt.genSalt(10);
-
     // creates hash to put into password
     user.password = await bcrypt.hash(password, salt);
 
     // save hash into password
     await user.save();
 
-    // JWT
     const payload = {
       user: {
         id: user.id
       }
     };
 
+    // Create JWT & pass back to client
     jwt.sign(payload,
       config.get('JWT_SECRET'),
       { expiresIn: 360000 },
@@ -74,8 +73,6 @@ router.post('/', [
       res.json({ token });
       }
     );
-
-
 
   } catch(err) {
     console.error(err.message);
