@@ -48,6 +48,7 @@ router.post('/',
       return res.status(400).json({ errors: errors.array()})
     }
 
+    // destructuring from req.body -- need to check if each added before submitting
     const {
       company,
       website,
@@ -62,6 +63,21 @@ router.post('/',
       instagram,
       linkedin
     } = req.body;
+
+    // build profile object
+    const profileFields = {};
+    profileFields.user = req.user.id;
+    if (company) profileFields.company = company;
+    if (website) profileFields.website = website;
+    if (location) profileFields.location = location;
+    if (bio) profileFields.bio = bio;
+    if (status) profileFields.status = status;
+    if (githubusername) profileFields.githubusername = githubusername;
+    if (skills) profileFields.skills = skills.split(',').map(skill => skill.trim());
+    console.log(skills);
+
+    res.send('Hello');
+
   });
 
 
