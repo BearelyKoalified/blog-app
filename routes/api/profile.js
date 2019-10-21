@@ -74,9 +74,11 @@ router.post('/',
     if (status) profileFields.status = status;
     if (githubusername) profileFields.githubusername = githubusername;
     if (skills) profileFields.skills = skills.split(',').map(skill => skill.trim());
+
+    // todo - finish this - left off here a while back.
     console.log(skills);
 
-    res.send('Hello');
+    res.send('dummy response');
 
   });
 
